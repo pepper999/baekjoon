@@ -1,7 +1,12 @@
-N = int(input())
-mem = []
-for i in range(N):
-    mem.append(list(input().split()))
-mem.sort(key = lambda a:int(a[0]))
-for i in range(N):
-    print(mem[i][0], mem[i][1])
+N, M = map(int, input().split())
+ls = [i+1 for i in range(N)]
+
+
+for k in range(M):
+    i, j = map(int, input().split())
+    temp = ls[i-1]
+    ls[i-1] = ls[j-1]
+    ls[j-1] = temp
+for i in range(len(ls)):
+    print(ls[i], end = ' ')
+
