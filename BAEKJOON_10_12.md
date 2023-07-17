@@ -312,7 +312,64 @@ def counting(arr):
         result[idx - 1] = num # 결과 리스트에 각 숫자를 배치
         cnt[num] -= 1 # count 리스트에 할당 된 숫자를 차감
     return result
-num = list(str(input()))
-rlt = counting(arr)
-print(rlt)
+
+num = list(map(int, str(input())))
+rlt = counting(num)
+for i in range(len(rlt)):
+    print(rlt[-i-1], end = '')
+```
+- 11650 좌표 정렬하기
+```python
+N = int(input())
+ls = []
+for i in range(N):
+    ls.append(list(map(int, input().split())))
+
+ls.sort()
+for i in range(N):
+    print(ls[i][0], end = ' ')
+    print(ls[i][1])
+```
+- 11651 좌표 정렬하기2
+```python
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+ls = []
+for i in range(N):
+    a, b = map(int, input().split())
+    ls.append([b, a])
+ls.sort()
+for i in range(N):
+    print(ls[i][1], end = ' ')
+    print(ls[i][0])   
+```
+- 1181 단어 정렬
+```python
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+ls = []
+
+for i in range(N):
+    ls.append(input().strip())
+ls = list(set(ls))
+ls.sort()
+ls.sort(key = len)
+
+for i in ls:
+    print(i)
+```
+- 10814 나이순 정렬
+```python
+N = int(input())
+mem = []
+for i in range(N):
+    mem.append(list(input().split()))
+mem.sort(key = lambda a:int(a[0])) # lambda 값으로 특정 기준을 할당!
+for i in range(N):
+    print(mem[i][0], mem[i][1])
+
 ```
