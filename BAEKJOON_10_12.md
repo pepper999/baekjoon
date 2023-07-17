@@ -373,3 +373,20 @@ for i in range(N):
     print(mem[i][0], mem[i][1])
 
 ```
+- 18870 좌표압축
+```python
+
+N = int(input())
+spt = list(map(int, input().split()))
+spt2 = list(set(spt))
+spt2.sort()
+
+spt_dict = {}
+for i in range(len(spt2)):
+    spt_dict[spt2[i]] = i
+
+for i in spt:
+    print(spt_dict[i], end = ' ')
+# list 의 인덱스에 의존한 인덱싱은 시간복잡도가 높아 시간이 오래걸리기 때문에 dict 으로 처리하는 것이 유리
+```
+-
