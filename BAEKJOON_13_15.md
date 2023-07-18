@@ -186,19 +186,48 @@ M_ls = []
 cnt = 0
 
 for i in range(N):
-  N_ls.append(input().split())
+    N_ls.append(input())
 for i in range(M):
-  M_ls.append(input().split())
+    M_ls.append(input())
 
-def check_mid(list1, num, start, end): # 데이터를 크기 순서대로 정렬 후, 반으로 나누어 검정하므로 시간 감소!
-    while(end >= start):
-        mid = (start+end)//2
-        if num == list1[mid]:
-            return cnt += 1
-        elif len(num) > len(list1[mid]):
-            start = mid+1
-        else: end = mid-1
-    return cnt = cnt
-
+for i in M_ls:
+    if i in N_ls:
+        cnt += 1
 print(cnt)
+```
+- 7785 회사에 있는 사람
+```python
+import sys
+input = sys.stdin.readline
+N = int(input())
+log = dict()
+for i in range(N):
+  a, b = input().split()
+  log[a] = b
+
+log = dict(sorted(log.items(), key = lambda item: item[0], reverse = True)) # item[0] => 딕셔너리의 key
+
+for key, val in log.items():
+  if val == 'enter':
+    print(key)
+```
+- 1620 포켓몬 마스터
+```python
+import sys
+input = sys.stdin.readline
+
+N, M = map(int, input().split())
+po_dict = dict()
+for i in range(N):
+    K = input()
+    po_dict[i+1] = K
+
+po_dict2 = {v:k for k,v in po_dict.items()}
+
+for i in range(M):
+    name = input()
+    try:
+        print(po_dict2[name])
+    except:
+        print(po_dict[int(name)].strip('\n'))
 ```

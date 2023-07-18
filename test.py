@@ -1,14 +1,18 @@
+import sys
+input = sys.stdin.readline
+
 N, M = map(int, input().split())
-N_ls = []
-M_ls = []
-cnt = 0
-
+po_dict = dict()
 for i in range(N):
-  N_ls.append(input())
-for i in range(M):
-  M_ls.append(input())
+    K = input()
+    po_dict[i+1] = K
 
-for i in M_ls:
-  if i in N_ls:
-    cnt += 1
-print(cnt)
+po_dict2 = {v:k for k,v in po_dict.items()}
+
+for i in range(M):
+    name = input()
+    try:
+        print(po_dict2[name])
+    except:
+        print(po_dict[int(name)].strip('\n'))
+
