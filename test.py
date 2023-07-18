@@ -1,11 +1,14 @@
-N = int(input())
-spt = list(map(int, input().split()))
-spt2 = list(set(spt))
-spt2.sort()
+N, M = map(int, input().split())
+N_ls = []
+M_ls = []
+cnt = 0
 
-spt_dict = {}
-for i in range(len(spt2)):
-    spt_dict[spt2[i]] = i
+for i in range(N):
+  N_ls.append(input())
+for i in range(M):
+  M_ls.append(input())
 
-for i in spt:
-    print(spt_dict[i], end = ' ')
+for i in M_ls:
+  if i in N_ls:
+    cnt += 1
+print(cnt)
