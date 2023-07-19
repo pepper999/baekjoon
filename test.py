@@ -1,24 +1,19 @@
-def gcd(x, y):
-    while y:
-        x, y = y, x % y
-    return x
 
-def gcdarr(list):
-    gcdarr = ls_p[0]
-    for i in range(len(ls_p)):
-        gcdarr = gcd(gcdarr, ls_p[i])
-    return gcdarr
-
-N = int(input())
 ls = []
-ls_p = []
-for i in range(N):
+for i in range(9):
     ls.append(int(input()))
-for i in range(N-1):
-    ls_p.append(ls[i+1] - ls[i])
 
-print(gcdarr(ls_p))
+for i in range(8):
+    for j in range(i+1, 9):
+        sum_ = sum(ls) - (ls[i] + ls[j])
+        if sum_ == 100:
+            pnt1, pnt2 = i, j
+    
+ls.pop(pnt1)
+ls.pop(pnt2-1)
+ls.sort()
 
-
+for i in ls:
+    print(i)
 
     
