@@ -352,5 +352,33 @@ print(a1//m, a2//m) #약분한 값 프린트
 ```
 - 2485 가로수
 ```python
+import sys
+input = sys.stdin.readline
+def gcd(x, y):
+    while y:
+        x, y = y, x % y
+    return x
 
+def gcdarr(list):
+    gcdarr = ls_p[0]
+    for i in range(len(ls_p)):
+        gcdarr = gcd(gcdarr, ls_p[i])
+    return gcdarr
+
+N = int(input())
+ls = []
+ls_p = []
+for i in range(N):
+    ls.append(int(input()))
+for i in range(N-1):
+    ls_p.append(ls[i+1] - ls[i])
+
+print(int(((ls[-1] - ls[0])/gcdarr(ls_p))-N+1))
+```
+- 다음 소수
+```python
+n = int(input())
+for i in range(n):
+    num = int(input())
+    
 ```

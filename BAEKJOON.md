@@ -11,6 +11,20 @@ C = str(input())
 
 print(str(ls1.index(A)) + str(ls1.index(B)))
 ```
+- 13458 시험감독
+```python
+N = int(input())
+A = list(map(int,input().split()))
+B, C = map(int, input().split())
+cnt = int(N)
+for i in range(N):
+    if A[i] - B > 0 and (A[i]-B)%C != 0:
+        cnt += (A[i]-B)//C + 1
+    if A[i] - B > 0 and (A[i]-B)%C == 0:
+        cnt += (A[i]-B)//C
+print(cnt)
+```
+### 수학적 방법들
 - 카운팅 정렬
 ```python
 def counting(arr):
@@ -28,17 +42,21 @@ def counting(arr):
         cnt[num] -= 1 # count 리스트에 할당 된 숫자를 차감
     return result
 ```
-- 13458 시험감독
+- 유클리드 호제법
 ```python
-N = int(input())
-A = list(map(int,input().split()))
-B, C = map(int, input().split())
-cnt = int(N)
-for i in range(N):
-    if A[i] - B > 0 and (A[i]-B)%C != 0:
-        cnt += (A[i]-B)//C + 1
-    if A[i] - B > 0 and (A[i]-B)%C == 0:
-        cnt += (A[i]-B)//C
-print(cnt)
+# 유클리드 호제법을 이용하여 최대공약수를 구함
+def gcd(x, y):
+    while y:
+        x, y = y, x % y
+    return x
+```
+- 3개 이상의 수의 최대공약수 찾기
+```python
+# 연속된 유클리드 호제법을 이용한 최대공약수
+def gcdarr(list):
+    gcdarr = ls_p[0]
+    for i in range(len(ls_p)):
+        gcdarr = gcd(gcdarr, ls_p[i])
+    return gcdarr
 ```
 
