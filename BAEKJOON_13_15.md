@@ -242,3 +242,115 @@ N = int(input())
 for i in list(map(int, input().split())):
     print(ls_M[i], end = ' ')
 ```
+- 1764 듣보잡
+```python
+import sys
+input = sys.stdin.readline
+from collections import Counter
+N, M = map(int, input().split())
+dct = dict()
+ls = list()
+cnt_ls = list()
+
+for i in range(N+M):
+    ls.append(input())
+
+cnt_ls = Counter(ls)
+
+for key, value in cnt_ls.items():
+    if value == 2:
+        dct[key] = value
+
+dct = dict(sorted(dct.items()))
+print(len(dct.keys()))
+for i in dct.keys():
+    print(i.rstrip('\n'))
+
+```
+- 1269 대칭 차집합
+```python
+import sys
+input = sys.stdin.readline
+from collections import Counter
+
+cnt = 0
+N, M = input().split()
+ls = list(map(int, input().split()))
+ls.extend(list(map(int, input().split())))
+
+cnt_ls = Counter(ls)
+
+for key, value in cnt_ls.items():
+    if value == 1:
+        cnt += 1
+
+print(cnt)
+```
+- 11478 서로 다른 부분 문자열의 갯수
+```python
+name = input()
+dct = dict()
+
+for i in range(len(name)):
+    for j in range(len(name)-i):
+        dct[name[j:j+i+1]] = 0
+
+print(len(dct.keys()))
+```
+### 백준 15단계
+- 1934 최소공배수
+```python
+T = int(input())
+c = 0
+
+# 유클리드 호제법을 이용하여 구한 최소공약수를 통해 계산
+def lcm(x, y, z): 
+    return int(x * y / z)
+
+# 유클리드 호제법을 이용하여 최소공배수를 구함
+def gcd(x, y):
+    while y:
+        x, y = y, x % y
+    return x
+
+for i in range(T):
+    a, b = map(int, input().split())
+    c = gcd(a, b)
+    print(int(lcm(a, b, c)))
+```
+- 13241 최소공배수
+```python
+def lcm(x, y, z): 
+    return int(x * y / z)
+
+# 유클리드 호제법을 이용하여 최소공배수를 구함
+def gcd(x, y):
+    while y:
+        x, y = y, x % y
+    return x
+
+a, b = map(int, input().split())
+c = gcd(a, b)
+print(int(lcm(a, b, c)))
+```
+- 1735 분수 합
+```python
+# 유클리드 호제법을 이용하여 최소공배수를 구함
+def gcd(x, y):
+    while y:
+        x, y = y, x % y
+    return x
+
+a1, a2 = map(int, input().split())
+b1, b2 = map(int, input().split())
+
+m = gcd(a2, b2)
+a1 = (a2*b1+a1*b2)//m # 통분해서 더함
+a2 = (a2*b2)//m
+m = gcd(a1, a2) # 약분을 위한 최대공약수
+print(a1//m, a2//m) #약분한 값 프린트
+```
+- 2485 가로수
+```python
+
+```

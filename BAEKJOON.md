@@ -28,3 +28,17 @@ def counting(arr):
         cnt[num] -= 1 # count 리스트에 할당 된 숫자를 차감
     return result
 ```
+- 13458 시험감독
+```python
+N = int(input())
+A = list(map(int,input().split()))
+B, C = map(int, input().split())
+cnt = int(N)
+for i in range(N):
+    if A[i] - B > 0 and (A[i]-B)%C != 0:
+        cnt += (A[i]-B)//C + 1
+    if A[i] - B > 0 and (A[i]-B)%C == 0:
+        cnt += (A[i]-B)//C
+print(cnt)
+```
+
