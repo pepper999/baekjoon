@@ -89,3 +89,44 @@ for i in range(36):
 
 print('Valid')
 ```
+- 1026 보물
+```python
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+gop = 0
+A.sort()
+B.sort()
+B.reverse()
+for i in range(N):
+    gop += A[i] * B[i]
+print(gop)
+```
+- 3048 개미
+```python
+import sys
+input = sys.stdin.readline
+
+N, M = map(int, input().split())
+ant1 = list(input().rstrip('\n'))
+ant2 = list(input().rstrip('\n'))
+T = int(input())
+
+ant1.reverse()
+ant_total = ant1 + ant2
+
+for i in range(T):
+    for i in range(len(ant_total) - 1):
+        if ant_total[i] in ant1 and ant_total[i+1] in ant2: # 각 개미가 만나면
+            ant_total[i], ant_total[i+1] = ant_total[i+1], ant_total[i] #각 개미의 자리를 변경
+        
+            if ant_total[i+1] == ant1[-1]:
+                break
+
+print(''.join(ant_total))
+```
+- 9372 상근이의 여행
+```python
+
+```
