@@ -1,15 +1,18 @@
-from collections import Counter
-T = int(input())
-for i in range(T):
-  A, B = list(map(str, input().split()))
-  cnt_A = Counter(A)
-  cnt_B = Counter(B)
-  cnt = 0
-  for key, value in cnt_A.items():
-    if value != cnt_B[key]:
-      print('Impossible')
-      break
-    cnt += 1
-  if cnt == len(A):
-    print('Possible')  
+N = int(input())
+num = list(map(int, input().split()))
+X = int(input())
+cnt = 0
+num.sort()
+A = 0
+B = N-1
+while B > A:
+    if num[A] + num[B] > X:
+        B -= 1
+    elif num[A] + num[B] < X:
+        A += 1
+    elif num[A] + num[B] == X:
+        cnt += 1
+        B -= 1
+        A += 1
 
+print(cnt)
