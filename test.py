@@ -25,14 +25,15 @@ skt = stack()
 
 N = int(input())
 ls = list(map(int, input().split()))
-cnt = 0
-j = 0
-for i in ls:
-    if skt.peek() < i:
-        print(cnt)
+
+for i in range(len(ls)):
+        while skt.peek() < i and skt.peek() != 0:
+            skt.pop()
+        print(skt.peek())
+        skt.push({i:ls[i]})
+            
+        
+    else:
         skt.push(i)
-        j += 1
-    elif skt.peek() > i:
-        while skt.peek() <= i:
-            skt.pop(i)
-            cnt += 1
+        cnt = i
+        print(cnt)
