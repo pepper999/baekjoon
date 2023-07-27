@@ -1,25 +1,31 @@
 N = int(input())
 ls = []
-stack_ls = []
+ls_stack = []
 for i in range(N):
     ls.append(int(input()))
-ls.append(-1)
+
 cnt = 0
+ls_stack.append([ls.pop(-1), -1, 0, 0])
+rlt = 0
+j = 1
+for i in range(N-1):
+    local_cnt = 0
+    temp_index = i
+    temp_item = ls.pop(-1)
 
-for i in range(N):
-    temp_long = -1
-    temp_val = ls.pop(0)
-    j = 0
-    while temp_val >= ls[j]:
-        if ls[j] == -1:
-            break
-        if temp_val >= temp_long and ls[j] >= temp_long:
-            temp_long = ls[j]
+    while ls_stack[temp_index][0] <= temp_item:
+        if ls_stack[temp_index][0] == temp_item:
+            local_cnt += 1
+            temp_index = ls_stack[temp_index][1]
+        elif ls_stack[temp_index][1] == -1:
+            ls_stack.append([temp_item, -1, local_cnt, j])
             j += 1
-            cnt += 1
-        elif ls[j] < temp_long:
             break
+        else:
+            temp_index = ls_stack[temp_index][1]
     else:
-        cnt += 1
+        ls_stack.append([temp_item, temp_index, local_cnt, j])
+        j += 1
+    
 
-print(cnt)
+print(ls_stack)
